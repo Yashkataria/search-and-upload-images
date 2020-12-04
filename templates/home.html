@@ -5,22 +5,58 @@
 {% block main %}
 
 <div class="container">
+  <div class="card-deck mb-3">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal text-center">Image</h4>
+      </div>
+      <div class="card-body">
+        <form action="upload" method="POST" enctype="multipart/form-data">
+          <label for="long_url">Image</label>
+          <input type="file" class="form-control" name="files[]" multiple="true" autocomplete="off" required>
+          <br>
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Upload</button>
+        </form>
+      </div>
+    </div>
+  </div>
+    
     <div class="card-deck mb-3">
       <div class="card mb-4 shadow-sm">
         <div class="card-header">
-          <h4 class="my-0 font-weight-normal text-center">Image</h4>
+          <h4 class="my-0 font-weight-normal text-center">Image Search</h4>
         </div>
         <div class="card-body">
-          <form action="upload" method="POST" enctype="multipart/form-data">
+          <form action="search" method="POST" enctype="multipart/form-data">
             <label for="long_url">Image</label>
-            <input type="file" class="form-control" name="files[]" multiple="true" autocomplete="off" required>
+            <input type="file" class="form-control" name="query_img" id="file" required>
             <br>
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Upload</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Search</button>
           </form>
         </div>
       </div>
     </div>
+
+    <div class="card-deck mb-3">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          {% if image_name %}
+            <img src="{{ url_for('uploaded_file',filename=image_name) }}" height="50%" width="50%">
+          {% endif %}
+        </div>
+        <div class="card-body">
+          {% for score in scores %}
+            <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
+                <img src="{{ score[1] }}" height="25%" width="25%">
+                <figcaption>{{ score[0] }}</figcaption>
+            </figure>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+
     
+
     {% if names %}
     <div class="card-deck mb-3">
         <div class="card mb-4 shadow-sm">
@@ -33,8 +69,8 @@
           {% endfor %}
           </div>
         </div>
-      </div>
-      {% endif %}
+    </div>
+    {% endif %}
 </div>
 
 {% endblock %}

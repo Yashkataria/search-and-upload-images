@@ -1,1 +1,3 @@
-flask
+pillow
+Flask
+tensorflow>=2.0.0

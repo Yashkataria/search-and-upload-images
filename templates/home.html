@@ -1,0 +1,15 @@
+{%  extends 'base.html' %}
+
+{% block title %}Image Uploader{% endblock %}
+
+{% block main %}
+
+<h1>Image Uploader</h1>
+
+<form method="POST" action="upload" enctype=multipart/form-data>
+    file : <input type="file" name="image" class="bg-warning" style="padding:10px" required><br />
+    <input type="submit" value="submit" class="bg-warning" style="padding:10px" required><br />
+</form>
+
+
+{% endblock %}

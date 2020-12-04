@@ -1,0 +1,10 @@
+# Log file
+server.log
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+#Already uploaded files
+uploads/*

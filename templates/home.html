@@ -13,13 +13,28 @@
         <div class="card-body">
           <form action="upload" method="POST" enctype="multipart/form-data">
             <label for="long_url">Image</label>
-            <input type="file" class="form-control" name="image" id="file" required>
+            <input type="file" class="form-control" name="files[]" multiple="true" autocomplete="off" required>
             <br>
             <button class="btn btn-primary btn-lg btn-block" type="submit">Upload</button>
           </form>
         </div>
       </div>
     </div>
+    
+    {% if names %}
+    <div class="card-deck mb-3">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal text-center">Uploaded Images</h4>
+          </div>
+          <div class="card-body">
+          {% for name in names %}
+          <img class="img-fluid" height=25% width=25% src="{{ url_for('uploaded_file',filename=name) }}">
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
 </div>
 
 {% endblock %}

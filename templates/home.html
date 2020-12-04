@@ -4,12 +4,22 @@
 
 {% block main %}
 
-<h1>Image Uploader</h1>
-
-<form method="POST" action="upload" enctype=multipart/form-data>
-    file : <input type="file" name="image" class="bg-warning" style="padding:10px" required><br />
-    <input type="submit" value="submit" class="bg-warning" style="padding:10px" required><br />
-</form>
-
+<div class="container">
+    <div class="card-deck mb-3">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal text-center">Image</h4>
+        </div>
+        <div class="card-body">
+          <form action="upload" method="POST" enctype="multipart/form-data">
+            <label for="long_url">Image</label>
+            <input type="file" class="form-control" name="image" id="file" required>
+            <br>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Upload</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
 
 {% endblock %}
